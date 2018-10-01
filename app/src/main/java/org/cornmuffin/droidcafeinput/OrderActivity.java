@@ -52,12 +52,10 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String spinnerLabel = adapterView.getItemAtPosition(i).toString();
-        displayToast(spinnerLabel);
+        // TODO When/if we actually do something to submit an order, we'll have to add some code here.
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

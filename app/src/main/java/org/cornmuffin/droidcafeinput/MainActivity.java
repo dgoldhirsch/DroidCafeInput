@@ -25,13 +25,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mOrderMessage != null && mOrderMessage.length() > 0) {
-                    Intent intent = new Intent(MainActivity.this, OrderActivity.class);
-                    intent.putExtra(EXTRA_MESSAGE, mOrderMessage);
-                    startActivity(intent);
-                } else {
-                    displayToast(getString(R.string.cart_empty));
-                }
+                start_order_activity_if_there_is_an_order();
             }
         });
     }
@@ -46,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_order:
-                displayToast(getString(R.string.action_order_message));
+                start_order_activity_if_there_is_an_order();
                 return true;
             case R.id.action_status:
                 displayToast(getString(R.string.action_status_message));
@@ -79,5 +73,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void start_order_activity_if_there_is_an_order() {
+        if (mOrderMessage != null && mOrderMessage.length() > 0) {
+            Intent intent = new Intent(MainActivity.this, OrderActivity.class);
+            intent.putExtra(EXTRA_MESSAGE, mOrderMessage);
+            startActivity(intent);
+        } else {
+            displayToast(getString(R.string.cart_empty));
+        }
     }
 }
